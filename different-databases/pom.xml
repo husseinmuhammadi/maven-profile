@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.javastudio.tutorial.profile</groupId>
+        <artifactId>maven-profile-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>maven-build-resources</artifactId>
+
+    <build>
+        <resources>
+            <resource>
+                <filtering>true</filtering>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>mariadb</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <datasource.url>jdbc:mariadb://localhost:3306/dbname</datasource.url>
+                <datasource.username>mariadb</datasource.username>
+                <datasource.password>mariadb</datasource.password>
+                <datasource.driver-class-name>org.mariadb.jdbc.Driver</datasource.driver-class-name>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.mariadb.jdbc</groupId>
+                    <artifactId>mariadb-java-client</artifactId>
+                    <version>1.5.7</version>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>postgres</id>
+            <properties>
+                <datasource.url>jdbc:postgresql://localhost:5432/postgres</datasource.url>
+                <datasource.username>postgres</datasource.username>
+                <datasource.password>postgres</datasource.password>
+                <datasource.driver-class-name>org.postgresql.Driver</datasource.driver-class-name>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.postgresql</groupId>
+                    <artifactId>postgresql</artifactId>
+                    <version>42.2.18</version>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>oracle</id>
+            <properties>
+                <datasource.url>jdbc:oracle:thin:@localhost:1521:orcl</datasource.url>
+                <datasource.username>oracle</datasource.username>
+                <datasource.password>oracle</datasource.password>
+                <datasource.driver-class-name>oracle.jdbc.driver.OracleDriver</datasource.driver-class-name>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>com.oracle.database.jdbc</groupId>
+                    <artifactId>ojdbc10</artifactId>
+                    <version>19.8.0.0</version>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+</project>
