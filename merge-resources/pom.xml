@@ -10,7 +10,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>maven-build-resources</artifactId>
+    <artifactId>merge-resources</artifactId>
 
     <build>
         <resources>

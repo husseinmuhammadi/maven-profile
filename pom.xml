@@ -11,7 +11,7 @@
 
     <modules>
         <module>different-databases</module>
-        <module>maven-build-resources</module>
+        <module>merge-resources</module>
     </modules>
 
     <properties>
